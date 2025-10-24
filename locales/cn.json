@@ -1,0 +1,100 @@
+{
+    "header": {
+        "nav_verify": "[cn] Verificar",
+        "nav_learn": "[cn] Saiba Mais",
+        "nav_share": "[cn] Compartilhar",
+        "nav_report": "[cn] Denunciar",
+        "nav_aid": "[cn] Ajuda",
+        "nav_partners": "[cn] Parceiros"
+    },
+    "hero": {
+        "title": "[cn] Conectando Segurança e Conscientização.",
+        "subtitle": "[cn] SafeLink é uma plataforma dedicada a combater o tráfico de pessoas, oferecendo ferramentas de verificação, recursos educacionais e um espaço seguro para compartilhar informações e fazer denúncias.",
+        "cta_verify": "[cn] Verificar Mensagem Agora",
+        "cta_learn": "[cn] Saiba Mais →"
+    },
+    "verification": {
+        "title": "[cn] Ferramenta de Verificação",
+        "subtitle": "[cn] Recebeu uma mensagem, proposta de emprego ou foto suspeita? Use nossa ferramenta com IA para analisar o conteúdo e identificar potenciais riscos.",
+        "tab_text": "[cn] Texto",
+        "tab_image": "[cn] Imagem",
+        "text_placeholder": "[cn] Cole a mensagem suspeita aqui...",
+        "image_text_placeholder": "[cn] Adicione contexto ou a mensagem que acompanha a imagem (opcional)...",
+        "file_input_cta": "[cn] Clique para enviar",
+        "file_input_sub_cta": "[cn] ou arraste e solte",
+        "file_input_hint": "[cn] Apenas imagens (PNG, JPG, etc.)",
+        "file_selected": "[cn] Arquivo selecionado",
+        "button_submit": "[cn] Verificar Conteúdo",
+        "button_analyzing": "[cn] Analisando...",
+        "spinner_text": "[cn] Analisando... Isso pode levar alguns segundos.",
+        "result_explanation": "[cn] Explicação",
+        "result_recommendation": "[cn] Recomendação",
+        "error_no_text": "[cn] Por favor, insira um texto para análise.",
+        "error_no_image": "[cn] Por favor, selecione uma imagem para análise.",
+        "error_api": "[cn] Não foi possível analisar o conteúdo. Por favor, tente novamente mais tarde."
+    },
+    "education": {
+        "title": "[cn] Entenda para Proteger",
+        "subtitle": "[cn] Informação é a nossa maior arma. Aprenda a reconhecer os sinais do tráfico de pessoas e ouça histórias de quem sobreviveu.",
+        "videos_title": "[cn] Vídeos Ilustrativos",
+        "video1_title": "[cn] As Falsas Promessas",
+        "video1_desc": "[cn] Veja como aliciadores usam propostas de emprego e relacionamento para atrair vítimas.",
+        "video2_title": "[cn] O Perigo nas Redes Sociais",
+        "video2_desc": "[cn] Saiba como proteger a si mesmo e aos jovens dos perigos online relacionados ao tráfico.",
+        "video3_title": "[cn] Sinais de Alerta",
+        "video3_desc": "[cn] Aprenda a identificar comportamentos e situações que podem indicar um caso de tráfico humano.",
+        "testimonials_title": "[cn] Depoimentos",
+        "testimonial1_quote": "[cn] A promessa era de uma vida melhor, mas se tornou um pesadelo. Conseguir escapar foi só o começo da jornada. Compartilhar minha história é uma forma de lutar.",
+        "testimonial1_author": "[cn] Sobrevivente Anônima",
+        "testimonial2_quote": "[cn] Eles controlavam tudo: meu dinheiro, meus documentos, com quem eu falava. Eu não era mais uma pessoa, era uma propriedade. A liberdade parecia impossível.",
+        "testimonial2_author": "[cn] Sobrevivente Anônimo"
+    },
+    "share": {
+        "title": "[cn] Sua História Importa",
+        "subtitle": "[cn] Se você ou alguém que conhece foi afetado pelo tráfico de pessoas, compartilhar sua experiência pode ser um passo importante para a cura e para alertar outros. O compartilhamento é anônimo e seguro.",
+        "form_label": "[cn] Sua história (anônima)",
+        "form_disclaimer": "[cn] Por favor, não inclua informações pessoais que possam identificar você ou outras pessoas.",
+        "form_placeholder": "[cn] Descreva sua experiência aqui...",
+        "form_consent": "[cn] Eu entendo que esta história será compartilhada anonimamente para fins de conscientização.",
+        "form_button": "[cn] Enviar História com Segurança",
+        "success_title": "[cn] Obrigado por Compartilhar",
+        "success_subtitle": "[cn] Sua voz é poderosa. Ao compartilhar sua história, você ajuda a conscientizar outras pessoas e a quebrar o ciclo de silêncio. Sua bravura faz a diferença.",
+        "success_cta": "[cn] Compartilhar Outra História"
+    },
+    "report": {
+        "title": "[cn] Faça uma Denúncia Anônima",
+        "subtitle": "[cn] Se você suspeita de um caso de tráfico de pessoas, sua denúncia pode salvar vidas. Use o formulário abaixo para nos informar. Todas as denúncias são anônimas.",
+        "form_label": "[cn] Descrição da Situação",
+        "form_disclaimer": "[cn] Descreva o que você viu ou ouviu. Inclua o máximo de detalhes possível, como locais, datas, nomes (se souber e for seguro), e por que você suspeita que seja tráfico de pessoas.",
+        "form_placeholder": "[cn] Forneça todos os detalhes relevantes aqui...",
+        "form_warning": "[cn] AVISO: Este não é um canal de emergência. Se alguém estiver em perigo imediato, ligue para a polícia ou para o Disque 100.",
+        "form_button": "[cn] Enviar Denúncia Anônima",
+        "success_title": "[cn] Denúncia Recebida",
+        "success_subtitle": "[cn] Sua denúncia anônima foi recebida. Agradecemos por sua atitude. As informações serão tratadas com o máximo de sigilo. Se você ou alguém estiver em perigo imediato, por favor, contate as autoridades locais.",
+        "success_cta": "[cn] Disque 100 (Urgente)"
+    },
+    "aid": {
+        "title": "[cn] Ajuda Humanitária",
+        "subtitle": "[cn] Sua contribuição pode transformar vidas. Apoie organizações que atuam no resgate, acolhimento e reintegração de sobreviventes do tráfico de pessoas.",
+        "financial_title": "[cn] Doação Financeira",
+        "financial_desc": "[cn] Contribuições monetárias ajudam a custear abrigos, assistência médica, jurídica e psicológica para as vítimas.",
+        "financial_cta": "[cn] Doe Agora",
+        "products_title": "[cn] Doação de Produtos",
+        "products_desc": "[cn] Itens de higiene, roupas, alimentos e materiais educacionais são essenciais para o recomeço de um sobrevivente.",
+        "products_cta": "[cn] Saiba Como Doar"
+    },
+    "partners": {
+        "title": "[cn] Nossos Parceiros",
+        "subtitle": "[cn] Trabalhamos em colaboração com organizações globais para fortalecer a luta contra o tráfico de pessoas e ampliar nosso impacto."
+    },
+    "footer": {
+        "about": "[cn] Uma iniciativa para a conscientização e combate ao tráfico de pessoas através da tecnologia e informação.",
+        "resources_title": "[cn] Recursos Importantes",
+        "resource1": "[cn] Disque 100 - Direitos Humanos",
+        "resource2": "[cn] UNODC - Tráfico de Pessoas",
+        "resource3": "[cn] Childhood Brasil",
+        "disclaimer_title": "[cn] Aviso Legal",
+        "disclaimer_text": "[cn] SafeLink é uma ferramenta de auxílio e conscientização. Não substitui a denúncia oficial às autoridades competentes. Em caso de emergência, contate a polícia.",
+        "rights": "[cn] Todos os direitos reservados."
+    }
+}

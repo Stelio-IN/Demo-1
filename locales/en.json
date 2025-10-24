@@ -1,0 +1,100 @@
+{
+    "header": {
+        "nav_verify": "Verify",
+        "nav_learn": "Learn More",
+        "nav_share": "Share",
+        "nav_report": "Report",
+        "nav_aid": "Help",
+        "nav_partners": "Partners"
+    },
+    "hero": {
+        "title": "Connecting Safety and Awareness.",
+        "subtitle": "SafeLink is a platform dedicated to combating human trafficking, offering verification tools, educational resources, and a safe space to share information and make reports.",
+        "cta_verify": "Verify Message Now",
+        "cta_learn": "Learn More →"
+    },
+    "verification": {
+        "title": "Verification Tool",
+        "subtitle": "Received a suspicious message, job offer, or photo? Use our AI-powered tool to analyze the content and identify potential risks.",
+        "tab_text": "Text",
+        "tab_image": "Image",
+        "text_placeholder": "Paste the suspicious message here...",
+        "image_text_placeholder": "Add context or the message accompanying the image (optional)...",
+        "file_input_cta": "Click to upload",
+        "file_input_sub_cta": "or drag and drop",
+        "file_input_hint": "Images only (PNG, JPG, etc.)",
+        "file_selected": "File selected",
+        "button_submit": "Verify Content",
+        "button_analyzing": "Analyzing...",
+        "spinner_text": "Analyzing... This may take a few seconds.",
+        "result_explanation": "Explanation",
+        "result_recommendation": "Recommendation",
+        "error_no_text": "Please enter text to analyze.",
+        "error_no_image": "Please select an image to analyze.",
+        "error_api": "Could not analyze the content. Please try again later."
+    },
+    "education": {
+        "title": "Understand to Protect",
+        "subtitle": "Information is our greatest weapon. Learn to recognize the signs of human trafficking and hear stories from those who survived.",
+        "videos_title": "Illustrative Videos",
+        "video1_title": "The False Promises",
+        "video1_desc": "See how traffickers use job and relationship offers to lure victims.",
+        "video2_title": "The Danger on Social Media",
+        "video2_desc": "Learn how to protect yourself and young people from online dangers related to trafficking.",
+        "video3_title": "Warning Signs",
+        "video3_desc": "Learn to identify behaviors and situations that may indicate a case of human trafficking.",
+        "testimonials_title": "Testimonials",
+        "testimonial1_quote": "The promise was a better life, but it became a nightmare. Escaping was just the beginning of the journey. Sharing my story is a way to fight back.",
+        "testimonial1_author": "Anonymous Survivor",
+        "testimonial2_quote": "They controlled everything: my money, my documents, who I spoke to. I was no longer a person, I was property. Freedom seemed impossible.",
+        "testimonial2_author": "Anonymous Survivor"
+    },
+    "share": {
+        "title": "Your Story Matters",
+        "subtitle": "If you or someone you know has been affected by human trafficking, sharing your experience can be an important step towards healing and warning others. Sharing is anonymous and safe.",
+        "form_label": "Your story (anonymous)",
+        "form_disclaimer": "Please do not include personal information that could identify you or others.",
+        "form_placeholder": "Describe your experience here...",
+        "form_consent": "I understand that this story will be shared anonymously for awareness purposes.",
+        "form_button": "Submit Story Securely",
+        "success_title": "Thank You for Sharing",
+        "success_subtitle": "Your voice is powerful. By sharing your story, you help raise awareness and break the cycle of silence. Your bravery makes a difference.",
+        "success_cta": "Share Another Story"
+    },
+    "report": {
+        "title": "Make an Anonymous Report",
+        "subtitle": "If you suspect a case of human trafficking, your report can save lives. Use the form below to inform us. All reports are anonymous.",
+        "form_label": "Description of the Situation",
+        "form_disclaimer": "Describe what you saw or heard. Include as much detail as possible, such as locations, dates, names (if you know them and it's safe), and why you suspect it is human trafficking.",
+        "form_placeholder": "Provide all relevant details here...",
+        "form_warning": "WARNING: This is not an emergency channel. If someone is in immediate danger, call the police or the emergency hotline.",
+        "form_button": "Submit Anonymous Report",
+        "success_title": "Report Received",
+        "success_subtitle": "Your anonymous report has been received. Thank you for taking action. The information will be treated with the utmost confidentiality. If you or someone is in immediate danger, please contact local authorities.",
+        "success_cta": "Call Emergency Hotline"
+    },
+    "aid": {
+        "title": "Humanitarian Aid",
+        "subtitle": "Your contribution can transform lives. Support organizations working to rescue, shelter, and reintegrate survivors of human trafficking.",
+        "financial_title": "Financial Donation",
+        "financial_desc": "Monetary contributions help fund shelters, medical, legal, and psychological assistance for victims.",
+        "financial_cta": "Donate Now",
+        "products_title": "Product Donation",
+        "products_desc": "Hygiene items, clothing, food, and educational materials are essential for a survivor's new beginning.",
+        "products_cta": "Learn How to Donate"
+    },
+    "partners": {
+        "title": "Our Partners",
+        "subtitle": "We work in collaboration with global organizations to strengthen the fight against human trafficking and expand our impact."
+    },
+    "footer": {
+        "about": "An initiative to raise awareness and combat human trafficking through technology and information.",
+        "resources_title": "Important Resources",
+        "resource1": "Human Rights Hotline",
+        "resource2": "UNODC - Human Trafficking",
+        "resource3": "Childhood Brazil",
+        "disclaimer_title": "Disclaimer",
+        "disclaimer_text": "SafeLink is a tool for assistance and awareness. It does not replace official reporting to the proper authorities. In case of emergency, contact the police.",
+        "rights": "All rights reserved."
+    }
+}
