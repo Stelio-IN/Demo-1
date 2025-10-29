@@ -14,34 +14,51 @@ const responseSchema = {
     },
     explanation: {
       type: Type.STRING,
-      description: "Explicação detalhada da análise e dos sinais de alerta identificados.",
+      description: "Explicação detalhada da análise e dos sinais de alerta identificados, considerando todos os fatores.",
     },
     recommendation: {
       type: Type.STRING,
-      description: "Próximos passos para o usuário, como bloquear a pessoa ou contatar as autoridades.",
+      description: "Próximos passos para o usuário, como bloquear a pessoa, não compartilhar informações ou contatar as autoridades.",
     },
   },
   required: ['verdict', 'explanation', 'recommendation'],
 };
 
-const getAnalysisPrompt = (mode: 'text' | 'image') => {
-  const basePrompt = "Analise o conteúdo a seguir em busca de sinais de tráfico de pessoas, aliciamento, atividade fraudulenta ou manipulação. Forneça uma resposta estruturada em JSON. ";
-  if (mode === 'image') {
-    return basePrompt + "A imagem fornecida pode ser parte de uma tentativa de aliciamento ou fraude. Examine pistas de contexto, elementos suspeitos ou qualquer coisa que pareça fora do lugar.";
-  }
-  return basePrompt + "A mensagem de texto fornecida pode ser uma tentativa de golpe ou aliciamento.";
+const getAnalysisPrompt = (mode: 'text' | 'image', location?: string, sender?: string) => {
+  return `
+    You are a highly specialized AI analyst with expertise in identifying human trafficking, fraudulent schemes, and online enticement. Your task is to conduct a thorough risk analysis of the following content.
+
+    **Analysis Framework:**
+    Evaluate the content based on these critical factors:
+    1.  **Message Content:** Analyze the language for tone, urgency, promises (especially if they seem too good to be true), and inconsistencies.
+    2.  **Deception Techniques:** Identify common tactics like fraudulent job offers, romantic enticement ('loverboy' tactic), threats, isolation methods, or requests for money/personal documents.
+    3.  **Proposal Structure:** Assess the professionalism. Is the offer vague? Does it lack verifiable details like a legitimate company name, address, or contact information?
+    4.  **Sender Information:** ${sender ? `The sender is identified as: "${sender}". Assess if this information seems credible or suspicious.` : 'No sender information was provided.'}
+    5.  **Geolocation:** ${location ? `The offer is associated with this location: "${location}". Cross-reference this with known human trafficking hotspots or routes. Be aware of regions known for specific types of exploitation.` : 'No location was provided.'}
+    6.  **Contextual Risks:** Consider if the situation aligns with known patterns, such as targeting vulnerable populations or leveraging specific events/times of the year (e.g., major sporting events, holidays) for recruitment.
+
+    Provide your analysis in a structured JSON format.
+  `;
 };
 
 export const analyzeContent = async (
   text: string,
-  image?: { mimeType: string; data: string }
+  image?: { mimeType: string; data: string },
+  location?: string,
+  sender?: string
 ): Promise<AnalysisResult> => {
   try {
-    const prompt = getAnalysisPrompt(image ? 'image' : 'text');
-    // FIX: Refactored prompt construction for image analysis to combine text parts and handle optional context.
-    const contents = image
-      ? { parts: [{ text: `${prompt}${text ? `\n\nContexto adicional: "${text}"` : ''}` }, { inlineData: image }] }
-      : { parts: [{ text: `${prompt}\n\nMensagem: "${text}"` }] };
+    const prompt = getAnalysisPrompt(image ? 'image' : 'text', location, sender);
+    
+    const fullTextPrompt = `${prompt}\n\n---START OF CONTENT TO ANALYZE---\nContext/Message: "${text || '(No text provided)'}"\n---END OF CONTENT TO ANALYZE---`;
+
+    // FIX: Explicitly type `parts` as an array that can contain both text and image parts to resolve type inference issue.
+    const parts: ({ text: string; } | { inlineData: { mimeType: string; data: string; }; })[] = [{ text: fullTextPrompt }];
+    if (image) {
+      parts.push({ inlineData: image });
+    }
+    const contents = { parts };
+
 
     const response: GenerateContentResponse = await ai.models.generateContent({
       model: model,
@@ -49,7 +66,7 @@ export const analyzeContent = async (
       config: {
         responseMimeType: "application/json",
         responseSchema: responseSchema,
-        temperature: 0.2,
+        temperature: 0.1,
       },
     });
 

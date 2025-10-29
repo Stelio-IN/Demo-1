@@ -11,8 +11,7 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <LanguageProvider>
-      <App />
-    </LanguageProvider>
+    {/* FIX: Explicitly pass the `App` component as the `children` prop to `LanguageProvider` to resolve a TypeScript error where the `children` prop was not being correctly inferred from the JSX syntax. */}
+    <LanguageProvider children={<App />} />
   </React.StrictMode>
 );

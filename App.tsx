@@ -5,8 +5,6 @@ import VerificationTool from './components/VerificationTool';
 import EducationalContent from './components/EducationalContent';
 import ShareStory from './components/ShareStory';
 import Report from './components/Report';
-import HumanitarianAid from './components/HumanitarianAid';
-import Partners from './components/Partners';
 import Footer from './components/Footer';
 
 function App() {
@@ -19,8 +17,6 @@ function App() {
         <EducationalContent />
         <ShareStory />
         <Report />
-        <HumanitarianAid />
-        <Partners />
       </main>
       <Footer />
     </div>

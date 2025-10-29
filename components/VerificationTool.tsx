@@ -55,6 +55,8 @@ const VerificationTool = () => {
     const [mode, setMode] = useState<VerificationMode>('text');
     const [inputText, setInputText] = useState('');
     const [imageFile, setImageFile] = useState<File | null>(null);
+    const [location, setLocation] = useState('');
+    const [sender, setSender] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [result, setResult] = useState<AnalysisResult | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -89,27 +91,28 @@ const VerificationTool = () => {
         setResult(null);
 
         try {
+            let analysis;
             if (mode === 'image' && imageFile) {
                 const base64Data = await fileToBase64(imageFile);
                 const imagePayload = { mimeType: imageFile.type, data: base64Data };
-                // FIX: Pass inputText directly to analyzeContent for image analysis, removing the default text.
-                const analysis = await analyzeContent(inputText, imagePayload);
-                setResult(analysis);
+                analysis = await analyzeContent(inputText, imagePayload, location, sender);
             } else {
-                const analysis = await analyzeContent(inputText);
-                setResult(analysis);
+                analysis = await analyzeContent(inputText, undefined, location, sender);
             }
+            setResult(analysis);
         } catch (err: any) {
             setError(t('verification.error_api'));
         } finally {
             setIsLoading(false);
         }
-    }, [mode, inputText, imageFile, t]);
+    }, [mode, inputText, imageFile, location, sender, t]);
 
     const resetState = () => {
         setInputText('');
         setImageFile(null);
         setFileName('');
+        setLocation('');
+        setSender('');
         setResult(null);
         setError(null);
     };
@@ -161,6 +164,32 @@ const VerificationTool = () => {
                                 {fileName && <p className="text-sm text-center mt-2 text-slate-500">{t('verification.file_selected')}: {fileName}</p>}
                             </>
                         )}
+                    </div>
+
+                    <div className="mt-4">
+                        <details>
+                            <summary className="cursor-pointer text-slate-600 font-semibold hover:text-blue-600 list-inside">
+                                {t('verification.advanced_details')}
+                            </summary>
+                            <div className="mt-4 space-y-4 p-4 bg-slate-50 rounded-md border border-slate-200">
+                                <input
+                                    type="text"
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    className="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
+                                    placeholder={t('verification.location_placeholder')}
+                                    disabled={isLoading}
+                                />
+                                <input
+                                    type="text"
+                                    value={sender}
+                                    onChange={(e) => setSender(e.target.value)}
+                                    className="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
+                                    placeholder={t('verification.sender_placeholder')}
+                                    disabled={isLoading}
+                                />
+                            </div>
+                        </details>
                     </div>
                     
                     <button

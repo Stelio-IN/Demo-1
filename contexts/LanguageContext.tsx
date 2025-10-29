@@ -11,7 +11,8 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+// FIX: Added explicit return type `React.ReactElement | null` to aid TypeScript's type inference, resolving a potential issue in how the component's type is consumed.
+export const LanguageProvider = ({ children }: { children: ReactNode }): React.ReactElement | null => {
     const [language, setLanguage] = useState<Language>('pt');
     const [translations, setTranslations] = useState<Record<Language, Translations> | null>(null);
 

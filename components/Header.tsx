@@ -69,8 +69,6 @@ const Header = () => {
     { name: t('header.nav_learn'), href: '#saiba-mais' },
     { name: t('header.nav_share'), href: '#compartilhar' },
     { name: t('header.nav_report'), href: '#denunciar' },
-    { name: t('header.nav_aid'), href: '#ajuda' },
-    { name: t('header.nav_partners'), href: '#parceiros' },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
