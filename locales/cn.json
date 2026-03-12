@@ -32,6 +32,7 @@
         "result_recommendation": "[cn] Recomendação",
         "error_no_text": "[cn] Por favor, insira um texto para análise.",
         "error_no_image": "[cn] Por favor, selecione uma imagem para análise.",
+        "error_api_config": "[cn] A análise por IA não está configurada. Defina GEMINI_API_KEY ou VITE_GEMINI_API_KEY no arquivo .env.local e reinicie o projeto.",
         "error_api": "[cn] Não foi possível analisar o conteúdo. Por favor, tente novamente mais tarde."
     },
     "education": {
@@ -102,6 +103,7 @@
         "chat_initial_message": "[cn] Olá. Sou o assistente virtual da SafeLink e estou aqui para ajudar você a fazer sua denúncia anônima. Todas as informações são confidenciais. Para começar, por favor, descreva a situação que você presenciou.",
         "chat_placeholder": "[cn] Digite sua mensagem...",
         "chat_send": "[cn] Enviar",
+        "chat_unavailable": "[cn] O assistente com IA está indisponível porque a chave da API Gemini não foi configurada. Defina GEMINI_API_KEY ou VITE_GEMINI_API_KEY no arquivo .env.local e reinicie o projeto.",
         "chat_error": "[cn] Desculpe, não consegui processar sua mensagem. Por favor, tente novamente.",
         "success_title": "[cn] Denúncia Recebida",
         "success_subtitle": "[cn] Sua denúncia anônima foi recebida. Agradecemos por sua atitude. As informações serão tratadas com o máximo de sigilo. Se você ou alguém estiver em perigo imediato, por favor, contate as autoridades locais.",

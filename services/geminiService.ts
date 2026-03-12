@@ -1,7 +1,31 @@
 import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
 import { AnalysisResult } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+type GeminiImportMetaEnv = {
+  VITE_GEMINI_API_KEY?: string;
+  GEMINI_API_KEY?: string;
+};
+
+const getGeminiApiKey = (): string | undefined => {
+  const viteEnv = (import.meta as ImportMeta & { env?: GeminiImportMetaEnv }).env;
+
+  return (
+    viteEnv?.VITE_GEMINI_API_KEY ||
+    viteEnv?.GEMINI_API_KEY ||
+    process.env.GEMINI_API_KEY ||
+    process.env.API_KEY
+  );
+};
+
+const getAiClient = (): GoogleGenAI => {
+  const apiKey = getGeminiApiKey();
+
+  if (!apiKey) {
+    throw new Error('GEMINI_API_KEY_MISSING');
+  }
+
+  return new GoogleGenAI({ apiKey });
+};
 
 const model = 'gemini-2.5-flash';
 
@@ -41,6 +65,17 @@ const getAnalysisPrompt = (mode: 'text' | 'image', location?: string, sender?: s
   `;
 };
 
+export const isGeminiConfigured = (): boolean => Boolean(getGeminiApiKey());
+
+export const createReportChat = (systemInstruction: string) => {
+  return getAiClient().chats.create({
+    model,
+    config: {
+      systemInstruction,
+    },
+  });
+};
+
 export const analyzeContent = async (
   text: string,
   image?: { mimeType: string; data: string },
@@ -48,6 +83,7 @@ export const analyzeContent = async (
   sender?: string
 ): Promise<AnalysisResult> => {
   try {
+    const ai = getAiClient();
     const prompt = getAnalysisPrompt(image ? 'image' : 'text', location, sender);
     
     const fullTextPrompt = `${prompt}\n\n---START OF CONTENT TO ANALYZE---\nContext/Message: "${text || '(No text provided)'}"\n---END OF CONTENT TO ANALYZE---`;

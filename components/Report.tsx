@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { GoogleGenAI, Chat } from "@google/genai";
+import { Chat } from "@google/genai";
+import { createReportChat, isGeminiConfigured } from '../services/geminiService';
 
 // Tipos
 type ReportMode = 'simple' | 'guided' | 'chat';
@@ -101,6 +102,7 @@ const ChatReportForm = ({ onSubmit }: { onSubmit: () => void }) => {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [chatUnavailable, setChatUnavailable] = useState(false);
     const chatRef = useRef<Chat | null>(null);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
     const initialized = useRef(false);
@@ -109,17 +111,22 @@ const ChatReportForm = ({ onSubmit }: { onSubmit: () => void }) => {
         if (initialized.current) return;
         initialized.current = true;
 
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
         const systemInstruction = t('report.chat_system_instruction');
 
-        chatRef.current = ai.chats.create({
-            model: 'gemini-2.5-flash',
-            config: {
-                systemInstruction: systemInstruction,
-            },
-        });
+        if (!isGeminiConfigured()) {
+            setChatUnavailable(true);
+            setMessages([]);
+            return;
+        }
 
-        setMessages([{ author: 'ai', text: t('report.chat_initial_message') }]);
+        try {
+            chatRef.current = createReportChat(systemInstruction);
+            setMessages([{ author: 'ai', text: t('report.chat_initial_message') }]);
+        } catch (error) {
+            console.error("Chat initialization error:", error);
+            setChatUnavailable(true);
+            setMessages([]);
+        }
     }, [t]);
 
     useEffect(() => {
@@ -128,7 +135,7 @@ const ChatReportForm = ({ onSubmit }: { onSubmit: () => void }) => {
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!input.trim() || isLoading || !chatRef.current) return;
+        if (!input.trim() || isLoading || !chatRef.current || chatUnavailable) return;
 
         const userMessage: ChatMessage = { author: 'user', text: input };
         setMessages(prev => [...prev, userMessage]);
@@ -151,6 +158,11 @@ const ChatReportForm = ({ onSubmit }: { onSubmit: () => void }) => {
     
     return (
         <div>
+            {chatUnavailable && (
+                <div className="mb-4 rounded-md border border-amber-300 bg-amber-50 p-4 text-amber-900">
+                    {t('report.chat_unavailable')}
+                </div>
+            )}
             <div className="h-96 overflow-y-auto p-4 bg-white border border-slate-200 rounded-md space-y-4">
                 {messages.map((msg, index) => (
                     <div key={index} className={`flex ${msg.author === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -179,9 +191,9 @@ const ChatReportForm = ({ onSubmit }: { onSubmit: () => void }) => {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder={t('report.chat_placeholder')}
                     className="flex-grow p-3 border border-slate-300 rounded-md"
-                    disabled={isLoading}
+                    disabled={isLoading || chatUnavailable}
                 />
-                <button type="submit" className="bg-blue-600 text-white font-semibold px-6 rounded-md disabled:bg-slate-400" disabled={isLoading}>
+                <button type="submit" className="bg-blue-600 text-white font-semibold px-6 rounded-md disabled:bg-slate-400" disabled={isLoading || chatUnavailable}>
                     {t('report.chat_send')}
                 </button>
             </form>

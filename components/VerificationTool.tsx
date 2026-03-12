@@ -101,7 +101,9 @@ const VerificationTool = () => {
             }
             setResult(analysis);
         } catch (err: any) {
-            setError(t('verification.error_api'));
+            setError(err instanceof Error && err.message === 'GEMINI_API_KEY_MISSING'
+                ? t('verification.error_api_config')
+                : t('verification.error_api'));
         } finally {
             setIsLoading(false);
         }

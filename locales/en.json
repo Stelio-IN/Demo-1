@@ -32,6 +32,7 @@
         "result_recommendation": "Recommendation",
         "error_no_text": "Please enter text to analyze.",
         "error_no_image": "Please select an image to analyze.",
+        "error_api_config": "AI analysis is not configured. Set GEMINI_API_KEY or VITE_GEMINI_API_KEY in .env.local and restart the project.",
         "error_api": "Could not analyze the content. Please try again later."
     },
     "education": {
@@ -102,6 +103,7 @@
         "chat_initial_message": "Hello. I am the SafeLink virtual assistant, and I'm here to help you file your anonymous report. All information is confidential. To begin, please describe the situation you witnessed.",
         "chat_placeholder": "Type your message...",
         "chat_send": "Send",
+        "chat_unavailable": "The AI assistant is unavailable because the Gemini API key is not configured. Set GEMINI_API_KEY or VITE_GEMINI_API_KEY in .env.local and restart the project.",
         "chat_error": "Sorry, I couldn't process your message. Please try again.",
         "success_title": "Report Received",
         "success_subtitle": "Your anonymous report has been received. Thank you for taking action. The information will be treated with the utmost confidentiality. If you or someone is in immediate danger, please contact local authorities.",
