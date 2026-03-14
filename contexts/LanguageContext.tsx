@@ -1,4 +1,7 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import pt from '../locales/pt.json';
+import en from '../locales/en.json';
+import cn from '../locales/cn.json';
 
 type Translations = Record<string, any>;
 type Language = 'pt' | 'en' | 'cn';
@@ -17,21 +20,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }): React.R
     const [translations, setTranslations] = useState<Record<Language, Translations> | null>(null);
 
     useEffect(() => {
-        const fetchTranslations = async () => {
-            try {
-                const [pt, en, cn] = await Promise.all([
-                    fetch('/locales/pt.json').then(res => res.json()),
-                    fetch('/locales/en.json').then(res => res.json()),
-                    fetch('/locales/cn.json').then(res => res.json())
-                ]);
-                setTranslations({ pt, en, cn });
-            } catch (error) {
-                console.error("Failed to load translation files:", error);
-                // Set empty objects to prevent the app from crashing
-                setTranslations({ pt: {}, en: {}, cn: {} });
-            }
-        };
-        fetchTranslations();
+        setTranslations({ pt, en, cn });
     }, []);
 
 
