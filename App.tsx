@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import VerificationTool from './components/VerificationTool';
 import EducationalContent from './components/EducationalContent';
 import ShareStory from './components/ShareStory';
+import Reintegration from './components/Reintegration';
 import Report from './components/Report';
 import Footer from './components/Footer';
 
@@ -16,6 +17,7 @@ function App() {
         <VerificationTool />
         <EducationalContent />
         <ShareStory />
+        <Reintegration />
         <Report />
       </main>
       <Footer />

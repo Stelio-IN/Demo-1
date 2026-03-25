@@ -68,6 +68,7 @@ const Header = () => {
     { name: t('header.nav_verify'), href: '#verificar' },
     { name: t('header.nav_learn'), href: '#saiba-mais' },
     { name: t('header.nav_share'), href: '#compartilhar' },
+    { name: t('header.nav_reintegration'), href: '#reintegracao' },
     { name: t('header.nav_report'), href: '#denunciar' },
   ];
 
